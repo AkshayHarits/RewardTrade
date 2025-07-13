@@ -1,4 +1,4 @@
-# NPCI_Ecell-Lunatics
+
 
 **Project Overview: Unified Points System**
 
