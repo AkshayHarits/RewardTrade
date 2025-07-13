@@ -95,6 +95,4 @@ python run.py
 - Dhruv Goyal
 - Ramuni Lalith Vishnu
 
-## License
 
-This project is licensed under the MIT License.
