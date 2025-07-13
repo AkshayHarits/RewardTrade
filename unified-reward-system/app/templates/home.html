@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RewardTrade - Unified Points System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url("/static/img3.jpg") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+            padding: 20px;
+        }
+
+        .header {
+            width: 100%;
+            background: rgba(34, 37, 43, 0.9);
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 20px;
+            z-index: 1000;
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease-in-out;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            color: #4caf50;
+        }
+
+        .nav-links a {
+            color: #4caf50;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #45a049;
+        }
+
+        .main-content {
+            width: 100%;
+            max-width: 900px;
+            margin-top: 80px;
+        }
+
+        .content-card {
+            background: rgba(34, 37, 43, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: scale(1.03);
+        }
+
+        .content-card h2 {
+            color: #4caf50;
+            margin-bottom: 15px;
+        }
+
+        .split-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .split-container div {
+            background: #33373D;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            flex: 1 1 45%;
+            min-width: 250px;
+            color: white;
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .team-member {
+            background: #33373D;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                margin-top: 10px;
+            }
+
+            .split-container div {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="header">
+        <h1>RewardTrade</h1>
+        <div class="nav-links">
+            <a href="{{ url_for('main.login') }}">Dashboard</a>
+            <a href="{{ url_for('main.login') }}">Login</a>
+            <a href="{{ url_for('main.register') }}">Register</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="content-card">
+            <h2>Welcome to RewardTrade</h2>
+            <p>Effortlessly manage and convert your loyalty points across multiple merchants. Enjoy seamless transactions and maximize your rewards.</p>
+        </div>
+
+        <div class="content-card">
+            <h2>How the Trades Work</h2>
+            <div class="split-container">
+                <div>
+                    <h3>Liquidity Pool Exchange</h3>
+                    <p>Convert your points instantly at fixed rates for seamless transactions.</p>
+                </div>
+                <div>
+                    <h3>Market-Driven Trading</h3>
+                    <p>Trade points at competitive rates and get the best value for your rewards.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>Meet Our Team</h2>
+            <div class="team-members">
+                <div class="team-member">Sashim Suryawanshi</div>
+                <div class="team-member">Akshay Harits</div>
+                <div class="team-member">Dhruv Goyal</div>
+                <div class="team-member">Ramuni Lalith Vishnu</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

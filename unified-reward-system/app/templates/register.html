@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Register - UPS</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: url("/static/img3.jpg") no-repeat center center fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+        transition: backdrop-filter 0.3s ease-in-out;
+      }
+
+      .container {
+        width: 450px;
+        background: rgba(34, 37, 43, 0.9);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, background 0.3s ease,
+          box-shadow 0.3s ease-in-out;
+      }
+
+      .container:hover {
+        transform: scale(1.03);
+      }
+
+      body.active .container {
+        box-shadow: 0 0 20px rgba(42, 124, 247, 0.8),
+          0 0 40px rgba(42, 124, 247, 0.6);
+      }
+
+      body.active {
+        backdrop-filter: blur(10px);
+      }
+
+      .register-box input {
+        width: 100%;
+        padding: 10px;
+        background: #33373d;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        font-size: 14px;
+        margin-bottom: 10px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .register-box input:focus {
+        background: #444a50;
+        box-shadow: 0 0 10px rgba(42, 124, 247, 0.5);
+        outline: none;
+      }
+
+      .register-btn {
+        width: 100%;
+        padding: 12px;
+        background: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .register-btn:hover {
+        background: #45a049;
+      }
+
+      .flash {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        text-align: center;
+      }
+      .flash.error {
+        background-color: #f2dede;
+        border-color: #ebccd1;
+        color: #a94442;
+      }
+      .flash.success {
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+        color: #3c763d;
+      }
+
+      p {
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="register-box">
+        <h2>Create your account<span class="dot">.</span></h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %} {% endif %} {% endwith %}
+
+        <form method="POST">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            required
+          />
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="********"
+            required
+          />
+
+          <label for="phone">Phone Number (with country code)</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="+1234567890"
+            required
+          />
+
+          <button type="submit" class="register-btn">Register</button>
+        </form>
+
+        <p>
+          Already have an account?
+          <a href="{{ url_for('main.login') }}">Login here</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const body = document.body;
+      const inputs = document.querySelectorAll("input");
+
+      inputs.forEach((input) => {
+        input.addEventListener("focus", () => {
+          body.classList.add("active");
+        });
+
+        input.addEventListener("blur", () => {
+          body.classList.remove("active");
+        });
+      });
+    </script>
+  </body>
+</html>
